@@ -11,7 +11,7 @@ use rand::RngCore;
 use crate::crypto;
 use crate::models::{Entry, Vault};
 
-const VAULT_FILE: &str = "vault.json";
+const VAULT_FILE: &str = ".passwords.json";
 
 #[derive(Debug, Serialize, Deserialize)]
 struct EncryptedVault {
@@ -21,7 +21,8 @@ struct EncryptedVault {
 }
 
 fn vault_path() -> PathBuf {
-    PathBuf::from(VAULT_FILE)
+    let home = std::env::var("HOME").expect("HOME not set");
+    PathBuf::from(home).join(VAULT_FILE)
 }
 
 fn read_master_password() -> Result<String> {
