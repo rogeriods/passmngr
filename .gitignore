@@ -1,0 +1,14 @@
+# Build artifacts
+passmngr
+*.o
+*.obj
+build/
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*~
+
+# Misc
+*.log
