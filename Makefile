@@ -1,6 +1,6 @@
 CXX      ?= g++
-CXXFLAGS ?= -std=c++17 -Wall -Wextra -O2
-LDFLAGS  ?=
+CXXFLAGS ?= -std=c++17 -Wall -Wextra -O2 -fPIE
+LDFLAGS  ?= -pie
 
 OPENSSL_CFLAGS := $(shell pkg-config --cflags openssl 2>/dev/null)
 OPENSSL_LIBS  := $(shell pkg-config --libs openssl 2>/dev/null)
@@ -34,3 +34,4 @@ uninstall:
 	rm -f $(DESTDIR)/usr/local/bin/$(BIN)
 
 .PHONY: all clean install uninstall
+
